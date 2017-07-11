@@ -1,0 +1,3 @@
+App.controller('libTopicController', [function(){
+	
+}])

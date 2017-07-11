@@ -1,0 +1,85 @@
+<!-- 以一个带ID的div包含起来，容易控制css不越界 -->
+
+<div id="ns_tonglian_clue">
+	<div style="padding:15px 15px 0px 15px;">
+		<form class="form-inline relatedcom-form-search filter_link" role="form" id="relatedcom-form-search">
+			<div class="input-group input-sm">
+				<span class="input-group-addon">状态:</span>
+				<select data-ng-model="condition.editStatusSelected"
+						data-ng-options="s for s in condition.editStatusArr"
+						class="form-control" style="width:100px;">
+				</select>
+			</div>
+			<div class="input-group input-sm">
+				<span class="input-group-addon"> 标题:</span>
+				<input type="text" placeholder="请输入稿件名称" class="form-control" data-ng-model="condition.clueName">
+			</div>
+			<div class="input-group input-sm">
+				<span class="input-group-addon"> 编辑日期:</span>
+				<input type="text" class="form-control" data-ng-model="condition.modifiedTimeBegin"
+					   name="modifiedTimeBegin" style="width:143px;" placeholder="开始日期" custom-timepicker time-show="false">
+				<span class="input-group-addon">-</span>
+				<input type="text" class="form-control" data-ng-model="condition.modifiedTimeEnd"
+					   name="modifiedTimeEnd" style="width:143px;" placeholder="结束日期" custom-timepicker time-show="false">
+			</div>
+			<button data-ng-click="listObj.refresh()" class="btn btn-default relatedcom_search_btn" style="margin-left: 10px;">
+				<span class="glyphicon glyphicon-search"></span>
+			</button>
+		</form>
+	</div>
+	<div class="toolbar row list_operate" style="padding-left: 8px;">
+		<button class="btn btn-primary" data-ng-click="listObj.createNew()">
+			<i class="glyphicon glyphicon-plus"></i>
+			<span>新建</span>
+		</button>
+		<button class="btn btn-default" data-ng-click="listObj.uploadClue(Constants.RequestType.SUBMIT_TO_FLOW)" ><i class="fa fa-upload"></i> 上传</button>
+		<button class="btn btn-default" data-ng-click="listObj.refresh()"><i class="glyphicon glyphicon-refresh"></i>刷新</button>
+		<button class="btn btn-danger" data-ng-click="listObj.deleteClue(Constants.RequestType.JUST_SAVE)"><i class="glyphicon glyphicon-trash"></i> 删除</button>
+	</div>
+
+	<table class="table table-hover table-resource">
+		<thead class="evaluationDetial-thead">
+		<tr class='evaluationitem'>
+			<th class="col-sm-1">
+				<a href="javascript:;" data-ng-click="listObj.allchecked()">
+					<i class="fa fa-check-square-o" data-ng-class="{true:'fa-check-square-o', false: 'fa-square-o'}[listObj.allSelected]"></i>
+				</a>
+			</th>
+			<th class="col-sm-1">状态</th>
+			<th class="col-sm-2">稿件名称</th>
+			<th class="col-sm-1">创建者</th>
+			<th class="col-sm-2">记者</th>
+			<th class="col-sm-2">创建时间</th>
+		</tr>
+		</thead>
+		<!-- 列表展示 -->
+		<tbody class="relatedcomclue-detail-list">
+		<tr data-ng-repeat="item in listObj.data">
+			<td class="col-sm-1">
+				<a href="javascript:;" class="checkbox list-checkBox" data-ng-click="listObj.selected(item, $event)">
+					<i class="fa fa-check-square-o" data-ng-class="{true:'fa-check-square-o', false: 'fa-square-o'}[item.extraData.selected]"></i>
+				</a>
+			</td>
+			<td class="col-sm-1">
+				<label class="label" data-ng-class="{'未上传':'label-default','已上传':'label-success'}[item.editStatus]">
+					{{item.editStatus}}
+				</label>
+			</td>
+			<td class="col-sm-2 name" title="{{item.name}}" ><a data-ng-click="listObj.showDetail(item)" href="javascript:;">{{item.clueName}}</a></td>
+			<td class="col-sm-1">{{item.createdBy}}</td>
+			<td class="col-sm-2 authorName" title="{{item.extraData.authorName}}">{{item.authorName}}</td>
+			<td class="col-sm-2">{{item.createdTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+		</tr>
+		</tbody>
+	</table>
+
+	<div class="row relatedcomclue" style="border-bottom: medium none;border-top: medium none;">
+		<div class="col-sm-12 bottom-pagination" style="padding-left: 8px;">
+			<ul class="pagination pagination-sm">
+				<li data-ng-repeat="itme in listObj.data"></li>
+			</ul>
+		</div>
+	</div>
+
+</div>
+<div data-ng-include="'template/ClueSlider.html'"></div>

@@ -1,0 +1,44 @@
+<div class="all-page">
+	<div class="detail-info">
+		<h2><span class="glyphicon glyphicon-play"></span>内容详情</h2>
+		<p>{{topicObj.data.extraData.content}}</p>
+	</div>
+	<div class="attrbutes">
+		<h2><span class="glyphicon glyphicon-play"></span>属性</h2>
+		<div class="attr-layer">
+			<ul class="attr-list">
+				<li><span class="glyphicon glyphicon-user"></span>{{topicObj.data.createdBy}}</li>
+				<li><span class="glyphicon glyphicon-th-large"></span></li>
+				<li><span class="glyphicon glyphicon-send"></span></li>
+				<li class="dt"><span class="glyphicon glyphicon-calendar"></span>{{topicObj.data.createdTime | date:'yyyy-MM-dd hh:mm:ss'}}</li>		
+				<li class="attr-type"><span class="glyphicon glyphicon-open"></span>{{topicObj.data.extraData.mo_status}}</li>	
+			</ul>
+		</div>
+	</div>
+	<div class="mark-tab">
+		<h2><span class="glyphicon glyphicon-play"></span>标签</h2>
+		<div class="mark-layer">
+			<div class="pull-left mark-content" data-ng-repeat="item in tabs.data track by $index"><span>{{item}}</span><i class="fa fa-times" data-ng-click="tabs.delSingleTab($index)"></i></div>
+			<input class="pull-left" type="text" data-ng-model="tabs.addInput" data-ng-show="tabs.showFun" data-ng-keyup="tabs.keyUpFun()" placeholder="请输入标签，回车添加"/>
+			<div class="pull-left tab-add"><span class="glyphicon glyphicon-plus" data-ng-click="tabs.showFun=!tabs.showFun"></span></div>
+		</div>
+	</div>
+	<div class="material">
+		<h2><span class="glyphicon glyphicon-play"></span>素材</h2>
+
+		<div class="mt-content col-md-12">
+			<div class="layer col-md-6" data-ng-repeat="item in detailContent.materialData">
+				<div class="layer-left">
+					<span class="glyphicon glyphicon-play btn-lg btn-play"></span>
+					<img data-ng-src="{{item.imgUrl}}"/>				
+				</div>
+				<div class="layer-right">
+						<p class="text-title">{{item.title}}</p>					
+						<p class="t"><label>时长：</label><span class="space">{{item.during}}</span><label>格式：</label><span>{{item.type}}</span></p>
+						<p class="source">来源：<span>{{item.source}}</span></p>
+						<a class="btn btn-default download" href="javascript:;"><span class="glyphicon glyphicon-arrow-down"></span>下载</a>						
+				</div>
+			</div>		
+		</div>
+	</div>
+</div>

@@ -1,0 +1,193 @@
+#ns_tonglian_clue {
+
+}
+
+
+#ns_tonglian_clue .table > tbody > tr > td{
+    vertical-align: middle;
+    height:22px;
+}
+
+
+#ns_tonglian_clue .detail-clue{
+    height: 55px;
+    border-bottom: 1px solid #e8e9ed;
+    padding: 8px 25px;
+    color: #5d9cec;
+    margin: 0 5px;
+}
+#ns_tonglian_clue .glyphicon{
+    position:relative;
+    top:1px;
+    display:inline-block;
+}
+#ns_tonglian_clue .clue-require-red{
+    color: red;
+    margin-right: 5px;
+}
+#ns_tonglian_clue .properties {
+    font-size: 12px;
+    border-bottom: 1px solid #e8e9ed;
+    padding: 5px;
+    display: inline-block;
+    width: 100%;
+}
+#ns_tonglian_clue .subtitle {
+    clear: both;
+    margin: 0;
+    color: #10282d;
+    font-size: 14px;
+    padding: 0px 25px;
+}
+#ns_tonglian_clue .col-sm-12 .input-group, .col-sm-6 .input-group, .col-sm-4 .input-group {
+    width: 100%;
+    padding: 5px 0;
+}
+#ns_tonglian_clue .detail-div.detail-lg {
+    margin-left: calc(20%);
+    width: 80%;
+}
+
+/* 新建详情 */
+
+.detail-div .detail-lg {
+    margin-left: calc(20%);
+    width: 80%;
+}
+
+
+#ns_tonglian_clue .detail-div.detail-lg {
+    margin-left: calc(20%);
+    width: 80%;
+}
+
+
+#ns_tonglian_clue .detail-div .detail-body .properties {
+    border-bottom: 1px solid #e8e9ed;
+    padding: 5px;
+    display: inline-block;
+    width: 100%;
+}
+
+#ns_tonglian_clue .detail-div .detail-body .properties .form-group {
+    margin-left: 0;
+    margin-bottom: 0;
+    margin-right: 0;
+}
+
+#ns_tonglian_clue .detail-div .detail-body .properties .input-group {
+    width: 100%;
+    padding: 5px 0;
+}
+
+#ns_tonglian_clue .detail-div .detail-body .properties .input-group .input-group-addon {
+    width: 100px;
+}
+
+#ns_tonglian_clue .detail-div .detail-body .properties.tag .subtitle {
+    margin-bottom: 10px;
+}
+
+#ns_tonglian_clue .detail-div .detail-body .properties .tag-item {
+    background: #fafafa;
+    border: 1px solid #e1e8ed;
+    min-width: 58px;
+    height: 22px;
+    float: left;
+    margin-right: 12px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: #3d405c;
+    letter-spacing: 0;
+    text-align: left;
+    line-height: 22px;
+    padding-left: 10px;
+}
+
+#ns_tonglian_clue .detail-div .detail-body .properties .tag-item i {
+    color: #3ea2d9;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+#ns_tonglian_clue .detail-div .detail-body .properties .tag-blank {
+    background: #fafafa;
+    border: 1px solid #e1e8ed;
+    width: 146px;
+    height: 22px;
+    padding-left: 9px;
+    margin-bottom: 10px;
+}
+
+
+
+#ns_tonglian_clue .detail-div .detail-body .properties.clip {
+    border: 0;
+}
+
+#ns_tonglian_clue .detail-div .detail-body .properties.clip .upload-list-container {
+    height: 300px;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#ns_tonglian_clue .detail-div .detail-body .properties.clip .upload-button-bar {
+    height: 50px;
+    padding-top: 16px;
+    text-align: left;
+}
+
+#ns_tonglian_clue .detail-div .detail-body .properties.clip .upload-button-bar .auto-submit-cls {
+    position: absolute;
+    right: 120px;
+}
+
+#ns_tonglian_clue .detail-div .detail-body .properties.clip .upload-button-bar .btn-group-upload {
+    float: right;
+}
+
+#ns_tonglian_clue .filter_link {
+    background-color: rgb(249, 249, 247);
+}
+
+#ns_tonglian_clue .list_operate {
+    position: relative;
+    line-height: 50px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+#ns_tonglian_clue .list-checkBox{
+    margin:3px 0;
+}
+#ns_tonglian_clue .table{
+    table-layout:fixed;
+}
+#ns_tonglian_clue .relatedcomclue-detail-list .name{
+    width:100%;
+    word-break:keep-all;/* 不换行 */
+    white-space:nowrap;/* 不换行 */
+    overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+    text-overflow:ellipsis;
+}
+#ns_tonglian_clue .relatedcomclue-detail-list .authorName{
+    width:100%;
+    word-break:keep-all;/* 不换行 */
+    white-space:nowrap;/* 不换行 */
+    overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+    text-overflow:ellipsis;
+}
+#ns_tonglian_clue .relatedcomclue-detail-list .provideStation{
+    width:100%;
+    word-break:keep-all;/* 不换行 */
+    white-space:nowrap;/* 不换行 */
+    overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+    text-overflow:ellipsis;
+}
+#ns_tonglian_clue .relatedcomclue-detail-list tr{
+    border-bottom: 1px solid #ddd;
+}
+    

@@ -1,0 +1,24 @@
+<div id="ns_library_clue" class="row no-margin">
+	<div class="list-box">
+		<ul class="no-padding">
+			<li class="list-item" data-ng-repeat="item in listObj.data">
+				<a href="javascript:;" class="checkbox" data-ng-click="listObj.selected(item, $event)">
+					<i class="fa fa-check-square-o" data-ng-class="{true:'fa-check-square-o', false: 'fa-square-o'}[item.extraData.selected]"></i>
+				</a>
+				<div class="thumb-box">
+					<!--<img data-ng-click="listObj.showClips(item)" style="background: #202334 uservice(/ns/api/ladder/library/thumbnail?id={{item.id}}&size=M) no-repeat center;background-size: contain;" />-->
+				</div>
+				<div class="detail-box">
+					<div>
+						<h5 class="item-title">
+							<a href="javascript:;" class="text-muted">{{item.name}}</a>
+						</h5>
+						<a href="javascript:;" class="relase-channelpath">{{item.channel}}</a>
+						<div class="relase-time">{{item.createdTime | date:"yyyy-MM-dd HH:mm:ss"}}</div>
+					</div>
+					<div class="item-text">{{item.content}}</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>

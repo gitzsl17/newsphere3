@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html data-ng-app="App">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="renderer" content="webkit">
+		<link rel="stylesheet" href="3rd/bootstrap/css/bootstrap-theme.min.css" />
+		<link rel="stylesheet" href="3rd/bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="3rd/font-awesome/css/font-awesome.css" />
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/common.css" />
+		<link rel="stylesheet" href="css/myTopic.css" />
+		<script type="text/javascript" src="3rd/jquery-1.11.0.js"></script>
+		<script type="text/javascript" src="3rd/angularjs/angular.js"></script>
+		<script type="text/javascript" src="3rd/angularjs/angular-animate.min.js"></script>
+		<script type="text/javascript" src="3rd/angularjs/angular-resource.min.js"></script>
+		<script type="text/javascript" src="3rd/angularjs/angular-route.min.js"></script>
+		<script type="text/javascript" src="3rd/angularjs/angular-locale_zh-cn.js"></script>
+		<script type="text/javascript" src="3rd/angularjs/angular-uuid2.min.js"></script>
+		<script type="text/javascript" src="3rd/angularjs/angular-file-upload.min.js"></script>
+		<script type="text/javascript" src="3rd/angularjs/ui-bootstrap-tpls-1.1.0.min.js"></script>
+		
+		<script type="text/javascript" src="3rd/jquery-nicescroll.js"></script>
+		<script type="text/javascript" src="3rd/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
+
+		<script type="text/javascript" src="partials/clue.js"></script>
+		<script type="text/javascript" src="partials/myTopicCtrl.js"></script>
+		<script type="text/javascript" src="partials/libTopicCtrl.js"></script>
+		<script type="text/javascript" src="partials/pendTopicCtrl.js"></script>
+		<script type="text/javascript" src="partials/queryTopicCtrl.js"></script>
+		
+		<title>选题</title>
+	</head>
+
+	<body data-ng-controller="MainController">
+		<nav>
+			<div class="logo"></div>
+			<div class="" style="font-size:16px;">选题策划</div>
+			<ul>
+				<li><a href="javascript:;"><i class="glyphicon glyphicon-th-list" style="line-height:22px;"></i></a></li>
+				<li class="nav-item"><a href="#/clue">线索</a></li>
+				<li class="nav-item"><a href="#/mytopic">我的选题</a></li>
+				<li class="nav-item"><a href="#/pendtopic">待审选题</a></li>
+				<li class="nav-item"><a href="#/libtopic">选题库</a></li>
+				<li class="nav-item"><a href="#/querytopic">选题查询</a></li>
+				<li class="nav-item"><a href="#/relatedcome">新闻共享</a></li>
+			</ul>
+		</nav>
+		<div class="custom container-fluid" data-ng-view></div>
+	</body>
+</html>
