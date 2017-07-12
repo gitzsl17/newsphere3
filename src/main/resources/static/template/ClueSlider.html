@@ -1,27 +1,37 @@
 <!-- 以一个带ID的div包含起来，容易控制css不越界 -->
-<form class="detail-div detail-lg" name="FormClueEditor">
+<form class="detail-div detail-lg" name="FormClueEditor" data-ng-if="ClueEditor.obj !== null">
     <!-- 展示详情页面 -->
     <div class="detail-title">
+        <h4 data-ng-if="ClueEditor.isNew">
+            <i class="fa fa-plus"></i>
+            <span>新建线索</span>
+        </h4>
+        <h4 data-ng-if="!ClueEditor.isNew">
+            <i class="fa fa-edit"></i>
+            <span>编辑线索：{{ClueEditor.obj.clueName}}</span>
+        </h4>
         <div class="toolbar">
             <button class="btn btn-primary btn-xs btn-save-doc"
                     data-loading-text="WORD文档生成ing..."
                     autocomplete="off"
                     type="button"
-                    data-ng-click="ClueTonglianEditor.downloadDoc(ClueTonglianEditor.obj.id)">
+                    data-ng-click="ClueEditor.downloadDoc(ClueEditor.obj.id)">
                 <i class="glyphicon glyphicon-cloud-download"></i>下载WORD
             </button>
             <button class="btn btn-default btn-xs"
                     type="button"
-                    data-ng-click="ClueTonglianEditor.updateAsset(Constants.RequestType.SAVE_DRAFT)"
+                    data-ng-disabled="FormClueEditor.$invalid"
+                    data-ng-click="ClueEditor.updateAsset('DRAFT')">
                 <i class="glyphicon glyphicon-floppy-disk"></i> 保存
             </button>
             <button class="btn btn-primary btn-xs clue-submit"
                     type="button"
-                    data-ng-click="ClueTonglianEditor.updateAsset(Constants.RequestType.SUBMIT_TO_FLOW)"
+                    data-ng-disabled="FormClueEditor.$invalid"
+                    data-ng-click="ClueEditor.updateAsset('SUBMIT')">
                 <i class="glyphicon glyphicon-ok"></i> 提交
             </button>
         </div>
-        <a class="close" aria-label="Close" data-ng-click="ClueTonglianEditor.cancel()"><span aria-hidden="true">&times;</span></a>
+        <a class="close" data-ng-click="ClueEditor.cancel()"><span aria-hidden="true">&times;</span></a>
     </div>
     <!-- 展示详情的tab页标签 -->
     <div class="detail-body">
@@ -34,104 +44,52 @@
                         <b>基本属性</b>
                     </div>
                     <div class="col-sm-12 form-group"
-                         data-ng-class="{'has-error': FormClueTonglianEditor.name.$invalid}">
+                         data-ng-class="{'has-error': FormClueEditor.clueName.$invalid}">
                         <div class="input-group input-sm">
 							<span class="input-group-addon">
 								<span class="required">*</span>标题:
 							</span>
-                            <input type="text" class="form-control" name="name"
-                                   tabindex="0" data-ng-model="ClueTonglianEditor.obj.name"
+                            <input type="text" class="form-control" name="clueName"
+                                   tabindex="0" data-ng-model="ClueEditor.obj.clueName"
                                    data-ng-required="true"
-                                   data-ng-disabled="!(ClueTonglianEditor.isNew || ClueTonglianEditor.isEditStatus || ClueTonglianEditor.isDraft)"
                                    placeholder="标题为必填项，最多120个字">
                         </div>
                     </div>
-                    <div class="col-sm-4 form-group clearfix"
-                         data-ng-class="{'has-error': FormClueTonglianEditor.columnName.$invalid}">
+                    <div class="col-sm-4 form-group clearfix">
                         <div class="input-group input-sm">
-							<span class="input-group-addon">
-								<span class="required">*</span>栏目:
-							</span>
-                            <select data-ng-model="ClueTonglianEditor.obj.extraData.columnName"
-                                    data-ng-options="c for c in condition.columnNameArr"
-                                    data-ng-required="true"
-                                    class="form-control" style="width: 100%;" name="columnName"
-                                    data-ng-disabled="!(ClueTonglianEditor.isNew || ClueTonglianEditor.isEditStatus || ClueTonglianEditor.isDraft)">
-                                <option value="">请选择栏目</option>
-                            </select>
+                            <span class="input-group-addon">记者:</span>
+                            <input type="text" class="form-control" name="authorName" placeholder="请输入记者"
+                                   data-ng-model="ClueEditor.obj.authorName" data-ng-required="true">
                         </div>
                     </div>
-                    <div class="col-sm-4 form-group clearfix" data-ng-class="{'has-error': FormClueTonglianEditor.authorName.$invalid}">
-                        <div class="ns-popover-staff"
-                             data-popover-staff-required="true"
-                             data-popover-staff-name="author"
-                             data-popover-staff-title="记者"
-                             data-popover-staff-direction="right"
-                             data-popover-staff-is-transfer-to-edit="ClueTonglianEditor.isEditStatus"
-                             data-popover-staff-editor="ClueTonglianEditor"></div>
-                    </div>
                     <div class="col-sm-4 form-group clearfix"
-                         data-ng-class="{'has-error': FormClueTonglianEditor.newsDomain.$invalid}">
+                         data-ng-class="{'has-error': FormClueEditor.newsDomain.$invalid}">
                         <div class="input-group input-sm">
 							<span class="input-group-addon">
 								<span class="required">*</span>新闻领域:
 							</span>
-                            <select data-ng-model="ClueTonglianEditor.obj.extraData.newsDomain"
-                                    data-ng-required="true" name="newsDomain"
-                                    data-ng-options="s for s in ClueTonglianEditor.createArr"
-                                    data-ng-disabled="!(ClueTonglianEditor.isNew || ClueTonglianEditor.isEditStatus || ClueTonglianEditor.isDraft)"
+                            <select data-ng-model="ClueEditor.obj.newsDomain"
+                                    name="newsDomain"
+                                    data-ng-options="s for s in condition.newsDomain"
                                     class="form-control" style="width: 100%;">
                                 <option value="">请选择新闻领域</option>
                             </select>
                         </div>
                     </div>
-                    <div class="col-sm-4 form-group clearfix" data-ng-class="{'has-error': FormClueTonglianEditor.provideStation.$invalid}">
-                        <div class="input-group input-sm">
-							<span class="input-group-addon">
-								<span class="required">*</span>供片台:
-							</span>
-                            <input type="text" name="provideStation" class="form-control"
-                                   data-ng-disabled="!(ClueTonglianEditor.isNew || ClueTonglianEditor.isEditStatus || ClueTonglianEditor.isDraft)"
-                                   data-ng-required="true"
-                                   data-ng-model="ClueTonglianEditor.obj.extraData.provideStations"
-                                   placeholder="请输入供片台名字" maxLength="50">
-                            <span class="input-group-btn tonglian">
-								<button class="btn btn-info" type="button" title="选择供片台"
-                                        data-uib-popover-template="'ClueTonglianProStationSelectTemplate.html'"
-                                        data-popover-trigger="click"
-                                        data-popover-title="选择供片台"
-                                        data-popover-placement="right"
-                                        data-popover-is-open="ClueTonglianEditor.isPopoverOpenProvideStation"
-                                        data-popover-append-to-body="false"
-                                        data-ng-disabled="!(ClueTonglianEditor.isNew || ClueTonglianEditor.isEditStatus || ClueTonglianEditor.isDraft)">
-			   						选择供片台
-			   					</button>
-							</span>
-                        </div>
-                    </div>
                     <div class="col-sm-4 form-group clearfix">
                         <div class="input-group input-sm">
-                            <span class="input-group-addon">关键词:</span>
-                            <input type="text" class="form-control" name="keywords" placeholder="请输入关键词"
-                                   data-ng-model="ClueTonglianEditor.obj.extraData.keywords"
-                                   data-ng-disabled="!(ClueTonglianEditor.isNew || ClueTonglianEditor.isEditStatus || ClueTonglianEditor.isDraft)">
+                            <span class="input-group-addon">创建者:</span>
+                            <input type="text" class="form-control" name="createBy" placeholder="请输入创建者"
+                                   data-ng-model="ClueEditor.obj.createBy" data-ng-required="true">
                         </div>
-                    </div>
-                    <div class="col-sm-4 form-group clearfix">
-                        <div class="ns-popover-staff"
-                             data-popover-staff-required="false"
-                             data-popover-staff-name="correspondent"
-                             data-popover-staff-title="通讯员"
-                             data-popover-staff-direction="left"
-                             data-popover-staff-is-transfer-to-edit="ClueTonglianEditor.isEditStatus"
-                             data-popover-staff-editor="ClueTonglianEditor"></div>
                     </div>
                     <div class="col-sm-12 form-group clearfix">
                         <div class="input-group input-sm">
-                            <span class="input-group-addon">备注:</span>
-                            <textarea class="form-control" name="description" rows="2"
-                                      placeholder="请输入摘要与备注信息" data-ng-disabled="!(ClueTonglianEditor.isNew || ClueTonglianEditor.isEditStatus || ClueTonglianEditor.isDraft)"
-                                      data-ng-model="ClueTonglianEditor.obj.extraData.description"></textarea>
+                            <span class="input-group-addon">内容:</span>
+                            <textarea class="form-control" name="content" rows="2"
+                                      placeholder="请输入摘要与备注信息"
+                                      data-ng-model="ClueEditor.obj.content">
+                            </textarea>
                         </div>
                     </div>
                 </div>

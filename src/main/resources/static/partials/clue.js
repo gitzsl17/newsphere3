@@ -27,6 +27,21 @@ App.controller('clueController', ['$scope', '$http', '$timeout', '$uibModal', fu
         }
     }
 
+    $scope.condition = {
+        columnNameArr:{
+            1:"栏目1",
+            2:"栏目2",
+            3:"栏目3",
+            4:"栏目4"
+        },
+        newsDomain:{
+            1:"时政",
+            2:"军事",
+            3:"民生",
+            4:"政治"
+        }
+    }
+
     $scope.ClueEditor = {
         isNew:false,
         obj:null,
@@ -40,6 +55,33 @@ App.controller('clueController', ['$scope', '$http', '$timeout', '$uibModal', fu
                 createdTime:new Date(),
             }
         },
+
+        cancel:function () {
+            this.obj = null;
+            this.isNew = false;
+        },
+
+        updateAsset:function (Type) {
+            var param = {
+                authorName:this.obj.authorName,
+                content:this.obj.content,
+                createdBy:'邹圣力',
+                clueName:this.obj.clueName,
+                createdTime:new Date(),
+                editStatus:Type
+            };
+            $http({
+                url:'/ns/add',
+                method:'POST',
+                data:param,
+            }).success(function (resp) {
+                $scope.message = resp;
+                $scope.ClueEditor.cancel();
+                $timeout(function() {
+                    $scope.listObj.load();
+                }, 1000);
+            });
+        }
     }
 
 

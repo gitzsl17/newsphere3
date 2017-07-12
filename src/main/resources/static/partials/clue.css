@@ -1,3 +1,7 @@
+
+/*分界线*/
+
+
 #ns_tonglian_clue {
 
 }
@@ -55,11 +59,18 @@
     width: 80%;
 }
 
-
 #ns_tonglian_clue .detail-div.detail-lg {
     margin-left: calc(20%);
     width: 80%;
 }
+
+#ns_tonglian_clue .detail-title .toolbar>.btn {
+    margin-left: 10px;
+}
+
+
+
+
 
 
 #ns_tonglian_clue .detail-div .detail-body .properties {

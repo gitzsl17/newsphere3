@@ -83,12 +83,8 @@ nav> div{
 	float: left;
 	padding:27px 45px;
 }
-/*.logo {
-	height: 70px;
-	width: 70px;
-}*/
 nav> ul {
-	float: left:
+	float: left;
 }
 nav> ul> li{
 	float: left;
@@ -145,4 +141,348 @@ nav> ul> li.nav-item {
 
 .footer .orange {
 	color: #FC9700;
+}
+
+
+
+
+/*-------------------*/
+/*-------------------*/
+/*----华丽的分界线----*/
+/*-------------------*/
+/*-------------------*/
+
+
+
+@charset "utf-8";
+/*****************
+//
+// 通用组件
+//
+/*****************/
+
+.no-margin {
+	margin: 0 !important;
+}
+
+.badge {
+	background: #f00;
+	font-size: 12px;
+	margin-left: 10px;
+}
+
+.input-group .input-group-btn .popover {
+	min-width: 400px;
+}
+
+/*****************
+//
+// 新建
+//
+/*****************/
+.create-new {
+	position: fixed;
+	right: 210px;
+	top: 0;
+	z-index: 1;
+	width: 100px;
+	height: 60px;
+}
+
+.create-new .dropdown-toggle {
+	color: #9d9d9d;
+	text-decoration: none;
+	height: 60px;
+	width: 95px;
+	padding-top: 20px;
+	padding-left: 15px;
+	position: absolute;
+}
+
+.create-new.open .dropdown-toggle {
+	color: #fff;
+	background-color: #080808;
+}
+
+.create-new .dropdown-toggle:hover {
+	color: #ffffff;
+}
+
+.create-new .dropdown-menu {
+	position: absolute;
+	margin-left: -64px;
+}
+
+.create-new .dropdown-menu li a i {
+	margin-right: 10px;
+	font-size: 14px;
+}
+
+.create-new .dropdown-menu li a span {
+	font-size: 12px;
+}
+
+/*****************
+//
+// 向左滑动详情页
+//
+/*****************/
+
+.detail-div {
+	position: fixed;
+	border-left: 1px solid #e8e9ed;
+	background: #fff;
+	z-index: 800;
+	-webkit-box-shadow: 0 0px 15px rgba(0, 0, 0, 0.10);
+	box-shadow: 0 0px 15px rgba(0, 0, 0, 0.10);
+	padding: 0;
+	color: #444;
+	top: 70px;
+	right: auto;
+	bottom: 0;
+	left: 100%;
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	margin-left: 180px;
+	transition: left .5s ease;
+}
+
+.detail-div {
+	margin-left: 180px;
+	width: calc(100% - 180px);
+}
+
+.detail-div.detail-sm {
+	margin-left: calc(100% - 400px);
+	width: 400px;
+}
+
+@media screen and (max-width:400px) {
+	.detail-div.detail-sm {
+		margin-left: 0;
+		width: 100%;
+	}
+}
+
+.detail-div.detail-md {
+	margin-left: calc(100% - 900px);
+	width: 900px;
+}
+
+@media screen and (max-width:900px) {
+	.detail-div.detail-md {
+		margin-left: 0;
+		width: 100%;
+	}
+}
+
+.detail-div.detail-lg {
+	margin-left: calc(20%);
+	width: 80%;
+}
+
+@media screen and (max-width:1000px) {
+	.detail-div.detail-lg {
+		margin-left: 0;
+		width: 100%;
+	}
+}
+
+.detail-div.detail-full {
+	margin-left: 180px;
+	width: calc(100% - 180px);
+}
+
+@media screen and (max-width:1000px) {
+	.detail-div.detail-full {
+		margin-left: 0;
+		width: 100%;
+	}
+}
+
+.detail-div {
+	left: 0;
+}
+
+.detail-div.ng-enter {
+	transition: .5s;
+	left: 100%;
+}
+
+.detail-div.ng-enter-active {
+	left: 0;
+}
+
+.detail-div.ng-leave {
+	transition: .5s;
+	left: 0;
+}
+
+.detail-div.ng-leave-active {
+	left: 100%;
+}
+
+.detail-div .detail-title {
+	height: 55px;
+	border-bottom: 1px solid #e8e9ed;
+	padding: 8px 25px;
+}
+
+.detail-div .detail-title>h4 {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	display: inline-block;
+	white-space: nowrap;
+	max-width: 500px;
+}
+
+.detail-div .detail-title>h4>i,
+.detail-div .detail-title>h4>span {
+	color: #5d9cec;
+	margin: 0 5px;
+}
+
+.detail-div .detail-title .close {
+	position: absolute;
+	right: 0;
+	top: 0;
+	height: 55px;
+	width: 55px;
+	line-height: 55px;
+	text-align: center;
+}
+
+.detail-div .detail-title .close:hover {
+	background: highlight;
+}
+
+.detail-div .detail-title .toolbar {
+	position: absolute;
+	right: 56px;
+	top: 0;
+	height: 55px;
+	border-right: 1px solid #e8e9ed;
+	padding: 16px;
+}
+
+.detail-title .toolbar>.btn {
+	margin-left: 10px;
+}
+
+.detail-title .toolbar .btn-group>.btn {
+	margin-right: 10px;
+}
+
+.detail-body {
+	overflow: auto;
+	position: absolute;
+	top: 55px;
+	bottom: 20px;
+	left: 0;
+	right: 0;
+	padding: 0 15px 15px;
+}
+
+.detail-body>form {
+	padding: 10px 0;
+}
+
+.detail-div .detail-body .required {
+	color: red;
+	margin-right: 5px;
+}
+
+.detail-div .detail-body .mo-title-outter .mo-title {
+	height: 30px;
+	width: 82px;
+	text-align: center;
+	line-height: 30px;
+	padding-bottom: 10px;
+	vertical-align: middle;
+}
+
+.detail-div .detail-body .mo-title-outter .mo-title.active:after {
+	position: absolute;
+	content: '';
+	bottom: 0;
+	height: 5px;
+	background: #5d9cec !important;
+	left: 0;
+	right: 0;
+}
+
+.detail-div .detail-body .mo-title-outter .mo-title a {
+	border: none;
+	height: 30px;
+	width: 91px;
+	font-size: 14px;
+	color: #3d405c;
+	letter-spacing: 1.03px;
+	text-align: center;
+}
+
+.detail-div .detail-body .mo-title-outter .mo-title a:hover {
+	background-color: transparent;
+}
+
+.detail-div .detail-body .mo-title-outter .tab-content {
+	border-top: 1px solid #e8e9ed;
+}
+
+.detail-div .detail-body .properties {
+	border-bottom: 1px solid #e8e9ed;
+	padding: 5px;
+	display: inline-block;
+	width: 100%;
+}
+
+.detail-div .detail-body .properties .ueditor {
+	border: 1px solid #e8e9ed;
+}
+
+.detail-div .detail-body .properties .form-group {
+	margin-left: 0;
+	margin-bottom: 0;
+	margin-right: 0;
+}
+
+.detail-div .detail-body .properties .input-group {
+	width: 100%;
+	padding: 5px 0;
+}
+
+.detail-div .detail-body .properties .input-group .input-group-addon {
+	width: 100px;
+}
+
+.detail-div .detail-body .properties .tip {
+	right: -20px;
+	width: 200px;
+}
+
+.detail-div .detail-body .properties .tip span {
+	font-weight: 700;
+	font-size: 22px;
+	font-style: italic;
+	font-family: Constantia, Georgia;
+}
+
+.detail-div .detail-body .properties .input-group .refresh {
+	float: left;
+	top: -10px;
+	left: 10px;
+}
+
+.detail-div .detail-body .properties.tag .subtitle {
+	margin-bottom: 10px;
+}
+
+.detail-div .detail-body .properties.clip {
+	border: 0;
+}
+
+.detail-div .detail-body .properties .prop-content {
+	margin-left: 15px;
+	margin-right: 15px;
 }

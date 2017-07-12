@@ -16,18 +16,18 @@ public class Clue {
     private Date createdTime;
     private String createdBy;
 
-    private Integer editStatus;
+    private String editStatus;
 
     //无参构造
     public Clue(){
 
     }
 
-    public Integer getEditStatus() {
+    public String getEditStatus() {
         return editStatus;
     }
 
-    public void setEditStatus(Integer editStatus) {
+    public void setEditStatus(String editStatus) {
         this.editStatus = editStatus;
     }
 
