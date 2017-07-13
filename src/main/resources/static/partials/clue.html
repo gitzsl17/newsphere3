@@ -57,7 +57,7 @@
 		<tr data-ng-repeat="item in listObj.data">
 			<td class="col-sm-1">
 				<a href="javascript:;" class="checkbox list-checkBox" data-ng-click="listObj.selected(item, $event)">
-					<i class="fa fa-check-square-o" data-ng-class="{true:'fa-check-square-o', false: 'fa-square-o'}[item.extraData.selected]"></i>
+					<i class="fa fa-check-square-o" data-ng-class="{true:'fa-check-square-o', false: 'fa-square-o'}[item.selected]"></i>
 				</a>
 			</td>
 			<td class="col-sm-1">{{item.editStatus}}</td>

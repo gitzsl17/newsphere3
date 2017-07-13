@@ -46,6 +46,41 @@ App.controller('clueController', ['$scope', '$http', '$timeout', '$uibModal', fu
         isNew:false,
         obj:null,
         listObj:null,
+
+        selectData: [],
+        allSelected: false,
+        selected: function(at, e) {
+            e.stopPropagation();
+            at.selected = !at.selected;
+            if (at.selected) {
+                this.obj = angular.copy(at);
+                this.flagObj = at;
+                this.selectData.push(at);
+            }else {
+                for (var i = 0; i <= this.selectData.length - 1; i++) {
+                    var item = this.selectData;
+                    if (!item[i].selected) {
+                        this.selectData.splice(i,1);
+                    }
+                }
+            }
+            console.log(this.selectData);
+        },
+
+        allchecked: function() {
+            if(!this.allSelected) {
+                angular.forEach(this.data, function(item, index) {
+                    item.selected = true;
+                    $scope.listObj.selectData.splice(index,1,item);
+                });
+            } else {
+                angular.forEach(this.data, function(item, index) {
+                    item.selected = false;
+                });
+            }
+            this.allSelected = !this.allSelected;
+        },
+
         createNew:function () {
             this.isNew = true;
             this.obj = {
@@ -65,7 +100,7 @@ App.controller('clueController', ['$scope', '$http', '$timeout', '$uibModal', fu
             var param = {
                 authorName:this.obj.authorName,
                 content:this.obj.content,
-                createdBy:'邹圣力',
+                createdBy:this.obj.createdBy,
                 clueName:this.obj.clueName,
                 createdTime:new Date(),
                 editStatus:Type
@@ -77,6 +112,22 @@ App.controller('clueController', ['$scope', '$http', '$timeout', '$uibModal', fu
             }).success(function (resp) {
                 $scope.message = resp;
                 $scope.ClueEditor.cancel();
+                $timeout(function() {
+                    $scope.listObj.load();
+                }, 1000);
+            });
+        },
+
+        delete:function (deleteById) {
+            var param = {
+
+            };
+            $http({
+                url:'/ns/delete',
+                method:'POST',
+                data:param,
+            }).success(function (resp) {
+                $scope.message = resp;
                 $timeout(function() {
                     $scope.listObj.load();
                 }, 1000);
