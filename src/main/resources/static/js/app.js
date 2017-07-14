@@ -14,9 +14,6 @@ App.config(['$routeProvider', '$provide', function($routeProvider, $provide) {
 		}).when('/libtopic', {
 			templateUrl: 'partials/libTopic.html',
 			controller: 'libTopicController'
-		}).when('/querytopic', {
-			templateUrl: 'partials/queryTopic.html',
-			controller: 'queryTopicController'
 		}).when('/relatedcome', {
 			templateUrl: 'partials/relatedcome.html',
 			controller: 'relatedcomeController'
@@ -26,9 +23,14 @@ App.config(['$routeProvider', '$provide', function($routeProvider, $provide) {
 	}])
 	.controller('MainController', ['$rootScope', '$scope', '$uibModal',
 		function($rootScope, $scope, $uibModal) {
-			
+
 		}
 	])
+    /*.controller('loginController', ['$rootScope', '$scope', '$uibModal',
+        function($rootScope, $scope, $uibModal) {
+            console.log("111")
+        }
+    ])*/
 	.directive('elementDisable', [function(){
 		return {
 			restrict: "EA",
