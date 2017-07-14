@@ -1,3 +1,0 @@
-App.controller('libTopicController', [function(){
-	
-}])

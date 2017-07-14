@@ -12,10 +12,15 @@ buildscript {
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'war'
 apply plugin: 'org.springframework.boot'
 
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
+
+//bootRun {
+//	addResources = true
+//}
 
 repositories {
 	mavenCentral()
@@ -24,9 +29,28 @@ repositories {
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
+
+	compile('org.springframework.boot:spring-boot-starter-tomcat')
+	compile('javax.servlet:javax.servlet-api')
+
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-aop')
+	/*mysql*/
 	compile('mysql:mysql-connector-java')
+
+	/*shiro*/
+	compile('org.apache.shiro:shiro-core')
+	compile('org.apache.shiro:shiro-web')
+	compile('org.apache.shiro:shiro-spring')
+	compile('org.apache.shiro:shiro-ehcache')
+
+	/*热部署*/
+//	compile ('org.springframework.boot:spring-boot-devtools')
+
+	/*mybatis和spring的整合*/
+//	compile('org.mybatis:mybatis-spring')
+//	compile('com.alibaba:druid')
+
 //	compile ('org.springframework.boot:spring-boot-starter-data-mongodb:1.4.0.RELEASE')
 //	compile ('org.springframework.data:spring-data-mongodb:1.9.4.RELEASE')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
