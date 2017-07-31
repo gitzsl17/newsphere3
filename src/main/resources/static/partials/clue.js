@@ -54,7 +54,7 @@ App.controller('clueController', ['$scope', '$http', '$timeout', '$uibModal', fu
             }
             this.allSelected = !this.allSelected;
         },
-        deleteClue:function (updateType) {
+        deleteClue:function () {
         	if (this.selectData.length == 0) {
 //				Message.danger("请至少选择一个删除项!");
         		console.log("请至少选择一个删除项!");
@@ -67,8 +67,8 @@ App.controller('clueController', ['$scope', '$http', '$timeout', '$uibModal', fu
 						};
 						$http({
 							url:'/ns/delete',
-							method:'POST',
-							data:param,
+							method:'GET',
+							data:param
 						}).success(function (resp) {
 							$scope.message = resp;
 							$timeout(function() {
@@ -77,6 +77,33 @@ App.controller('clueController', ['$scope', '$http', '$timeout', '$uibModal', fu
 						});
 					});
 				}
+			}
+        },
+        uploadClue:function (updateType){
+        	if (this.selectData.length == 0) {
+        		console.log("请至少选择一个上传项!");
+			}else {
+				angular.forEach($scope.listObj.selectData, function(at){
+					var param = {
+						id:at.id,
+						authorName:at.authorName,
+		                content:at.content,
+		                createdBy:at.createdBy,
+		                clueName:at.clueName,
+		                createdTime:at.createdTime,
+		                editStatus:updateType
+					};
+					$http({
+						url:'/ns/update',
+						method:'POST',
+						data:param
+					}).success(function (resp) {
+						$scope.message = resp;
+						$timeout(function() {
+							$scope.listObj.load();
+						}, 1000);
+					});
+				});
 			}
         },
         showDetail: function(row) {

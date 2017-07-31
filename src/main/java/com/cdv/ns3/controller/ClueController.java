@@ -31,21 +31,21 @@ public class ClueController {
      * @return Clue
      */
     @PostMapping("/add")
-    public Clue add(@RequestBody Clue clue2, BindingResult bindingResult){
+    public Clue add(@RequestBody Clue clue, BindingResult bindingResult){
         UUIDUtils uuidUtils = new UUIDUtils();
-        clue2.setId(uuidUtils.creatUUID());
+        clue.setId(uuidUtils.creatUUID());
 
-        clue2.setCreatedBy(clue2.getCreatedBy());
-        clue2.setCreatedTime(clue2.getCreatedTime());
-        clue2.setAuthorName(clue2.getAuthorName());
-        clue2.setContent(clue2.getContent());
-        clue2.setClueName(clue2.getClueName());
-        clue2.setEditStatus(clue2.getEditStatus());
+        clue.setCreatedBy(clue.getCreatedBy());
+        clue.setCreatedTime(clue.getCreatedTime());
+        clue.setAuthorName(clue.getAuthorName());
+        clue.setContent(clue.getContent());
+        clue.setClueName(clue.getClueName());
+        clue.setEditStatus(clue.getEditStatus());
 
-        return clueService.add(clue2);
+        return clueService.add(clue);
     }
 
-    @PostMapping("/delete")
+    @GetMapping("/delete")
     public void delete(@RequestParam String id){
     	clueService.deleteById(id);
     }
@@ -55,6 +55,7 @@ public class ClueController {
         return clueService.findById(id);
     }
 
+    //上传
     @PostMapping("/update")
     public Clue update(@RequestBody Clue clue){
         clue.setId(clue.getId());
