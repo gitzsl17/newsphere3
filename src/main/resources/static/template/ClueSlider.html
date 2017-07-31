@@ -21,13 +21,13 @@
             <button class="btn btn-default btn-xs"
                     type="button"
                     data-ng-disabled="FormClueEditor.$invalid"
-                    data-ng-click="ClueEditor.updateAsset('DRAFT')">
+                    data-ng-click="ClueEditor.updateAsset('SUBMIT')">
                 <i class="glyphicon glyphicon-floppy-disk"></i> 保存
             </button>
             <button class="btn btn-primary btn-xs clue-submit"
                     type="button"
                     data-ng-disabled="FormClueEditor.$invalid"
-                    data-ng-click="ClueEditor.updateAsset('SUBMIT')">
+                    data-ng-click="ClueEditor.updateAsset('LIBRARY')">
                 <i class="glyphicon glyphicon-ok"></i> 提交
             </button>
         </div>
@@ -59,7 +59,7 @@
                         <div class="input-group input-sm">
                             <span class="input-group-addon">记者:</span>
                             <input type="text" class="form-control" name="authorName" placeholder="请输入记者"
-                                   data-ng-model="ClueEditor.obj.authorName" data-ng-required="true">
+                                   data-ng-model="ClueEditor.obj.authorName">
                         </div>
                     </div>
                     <div class="col-sm-4 form-group clearfix"
@@ -80,7 +80,7 @@
                         <div class="input-group input-sm">
                             <span class="input-group-addon">创建者:</span>
                             <input type="text" class="form-control" name="createBy" placeholder="请输入创建者"
-                                   data-ng-model="ClueEditor.obj.createBy" data-ng-required="true">
+                                   data-ng-model="ClueEditor.obj.createBy">
                         </div>
                     </div>
                     <div class="col-sm-12 form-group clearfix">

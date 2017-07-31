@@ -32,9 +32,9 @@
 			<i class="glyphicon glyphicon-plus"></i>
 			<span>新建</span>
 		</button>
-		<button class="btn btn-default" data-ng-click="listObj.uploadClue(Constants.RequestType.SUBMIT_TO_FLOW)" ><i class="fa fa-upload"></i> 上传</button>
+		<button class="btn btn-default" data-ng-click="listObj.uploadClue('LIBRARY')" ><i class="fa fa-upload"></i> 上传</button>
 		<button class="btn btn-default" data-ng-click="listObj.load()"><i class="glyphicon glyphicon-refresh"></i>刷新</button>
-		<button class="btn btn-danger" data-ng-click="listObj.deleteClue(Constants.RequestType.JUST_SAVE)"><i class="glyphicon glyphicon-trash"></i> 删除</button>
+		<button class="btn btn-danger" data-ng-click="listObj.deleteClue()"><i class="glyphicon glyphicon-trash"></i> 删除</button>
 	</div>
 
 	<table class="table table-hover table-resource">
@@ -60,7 +60,11 @@
 					<i class="fa fa-check-square-o" data-ng-class="{true:'fa-check-square-o', false: 'fa-square-o'}[item.selected]"></i>
 				</a>
 			</td>
-			<td class="col-sm-1">{{item.editStatus}}</td>
+			<td class="col-sm-1">
+				<label class="label" data-ng-class="{'未上传':'label-default','已上传':'label-success'}[item.editStatus]">
+					{{item.editStatus}}
+				</label>
+			</td>
 			<td class="col-sm-2 name" title="{{item.name}}" ><a data-ng-click="listObj.showDetail(item)" href="javascript:;">{{item.clueName}}</a></td>
 			<td class="col-sm-1">{{item.createdBy}}</td>
 			<td class="col-sm-2 authorName" title="{{item.extraData.authorName}}">{{item.authorName}}</td>

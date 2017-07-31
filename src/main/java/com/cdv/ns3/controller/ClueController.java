@@ -46,8 +46,8 @@ public class ClueController {
     }
 
     @PostMapping("/delete")
-    public Clue delete(@RequestParam String id){
-        return null;
+    public void delete(@RequestParam String id){
+    	clueService.deleteById(id);
     }
 
     @RequestMapping("/findById")
