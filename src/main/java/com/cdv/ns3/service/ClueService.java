@@ -33,5 +33,9 @@ public class ClueService {
     public Integer deleteById(String id){
         return clueRepository.deleteById(id);
     }
+    
+    public Long getCount(){
+    	return clueRepository.count();
+    }
 
 }

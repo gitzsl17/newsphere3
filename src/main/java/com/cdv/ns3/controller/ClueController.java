@@ -32,9 +32,12 @@ public class ClueController {
      */
     @PostMapping("/add")
     public Clue add(@RequestBody Clue clue, BindingResult bindingResult){
-        UUIDUtils uuidUtils = new UUIDUtils();
-        clue.setId(uuidUtils.creatUUID());
-
+    	if (clue.getId() == null) {
+    		UUIDUtils uuidUtils = new UUIDUtils();
+    		clue.setId(uuidUtils.creatUUID());
+		}else {
+			clue.setId(clue.getId());
+		}
         clue.setCreatedBy(clue.getCreatedBy());
         clue.setCreatedTime(clue.getCreatedTime());
         clue.setAuthorName(clue.getAuthorName());
@@ -45,12 +48,8 @@ public class ClueController {
         return clueService.add(clue);
     }
 
-    @GetMapping("/delete")
-    public void delete(@RequestParam String id){
-    	clueService.deleteById(id);
-    }
-
-    @RequestMapping("/findById")
+    //@RequestMapping("/findById")
+    @PostMapping("/findById")
     public Clue findById(@RequestParam String id){
         return clueService.findById(id);
     }
@@ -69,7 +68,7 @@ public class ClueController {
         return clueService.update(clue);
     }
 
-    @RequestMapping("/deleteById")
+    @PostMapping("/deleteById")
     public Integer deleteById(@RequestParam String id){
         return clueService.deleteById(id);
     }

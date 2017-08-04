@@ -51,6 +51,7 @@
 							</span>
                             <input type="text" class="form-control" name="clueName"
                                    tabindex="0" data-ng-model="ClueEditor.obj.clueName"
+                                   data-ng-disabled="!(ClueEditor.isNew || ClueEditor.isEditStatus)"
                                    data-ng-required="true"
                                    placeholder="标题为必填项，最多120个字">
                         </div>
@@ -59,6 +60,7 @@
                         <div class="input-group input-sm">
                             <span class="input-group-addon">记者:</span>
                             <input type="text" class="form-control" name="authorName" placeholder="请输入记者"
+                            	   data-ng-disabled="!(ClueEditor.isNew || ClueEditor.isEditStatus)"
                                    data-ng-model="ClueEditor.obj.authorName">
                         </div>
                     </div>
@@ -71,6 +73,7 @@
                             <select data-ng-model="ClueEditor.obj.newsDomain"
                                     name="newsDomain"
                                     data-ng-options="s for s in condition.newsDomain"
+                                    data-ng-disabled="!(ClueEditor.isNew || ClueEditor.isEditStatus)"
                                     class="form-control" style="width: 100%;">
                                 <option value="">请选择新闻领域</option>
                             </select>
@@ -80,6 +83,7 @@
                         <div class="input-group input-sm">
                             <span class="input-group-addon">创建者:</span>
                             <input type="text" class="form-control" name="createBy" placeholder="请输入创建者"
+                            	   data-ng-disabled="!(ClueEditor.isNew || ClueEditor.isEditStatus)"
                                    data-ng-model="ClueEditor.obj.createBy">
                         </div>
                     </div>
@@ -87,6 +91,7 @@
                         <div class="input-group input-sm">
                             <span class="input-group-addon">内容:</span>
                             <textarea class="form-control" name="content" rows="2"
+                            		  data-ng-disabled="!(ClueEditor.isNew || ClueEditor.isEditStatus)"
                                       placeholder="请输入摘要与备注信息"
                                       data-ng-model="ClueEditor.obj.content">
                             </textarea>

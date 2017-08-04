@@ -66,7 +66,7 @@ App.controller('clueController', ['$scope', '$http', '$timeout', '$uibModal', fu
 							id:at.id
 						};
 						$http({
-							url:'/ns/delete',
+							url:'/ns/deleteById',
 							method:'GET',
 							data:param
 						}).success(function (resp) {
@@ -107,8 +107,7 @@ App.controller('clueController', ['$scope', '$http', '$timeout', '$uibModal', fu
 			}
         },
         showDetail: function(row) {
-            $scope.topicObj.data = row;
-            $scope.topicObj.show = true;
+            $scope.ClueEditor.show(row);
         },
         submit: function() { //提交
             //TODO
@@ -138,6 +137,9 @@ App.controller('clueController', ['$scope', '$http', '$timeout', '$uibModal', fu
         isNew:false,
         obj:null,
         listObj:null,
+        data:null,
+        isNew:false,
+        isEditStatus:false,
 
         createNew:function () {
             this.isNew = true;
@@ -153,10 +155,23 @@ App.controller('clueController', ['$scope', '$http', '$timeout', '$uibModal', fu
             this.obj = null;
             this.isNew = false;
         },
+        
+        show:function (row) {
+        	this.obj = row;
+        	if (this.obj.editStatus == "已上传") {
+				this.isEditStatus = false;
+			}else {
+				this.isEditStatus = true;
+			}
+        },
 
         updateAsset:function (updateType) {
+        	if (this.obj.id == null || this.obj.id == undefined) {
+        		this.obj.id = null;	//新建稿件,id默认值为0
+			}
             var param = {
-                authorName:this.obj.authorName,
+                id:this.obj.id,
+            	authorName:this.obj.authorName,
                 content:this.obj.content,
                 createdBy:this.obj.createdBy,
                 clueName:this.obj.clueName,
