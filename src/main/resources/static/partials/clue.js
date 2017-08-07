@@ -63,11 +63,11 @@ App.controller('clueController', ['$scope', '$http', '$timeout', '$uibModal', fu
 				if (confirm(msg) == true) {
 					angular.forEach($scope.listObj.selectData, function(at){
 						var param = {
-							id:at.id
+							moId:at.id
 						};
 						$http({
 							url:'/ns/deleteById',
-							method:'GET',
+							method:'DELETE',
 							data:param
 						}).success(function (resp) {
 							$scope.message = resp;
